@@ -47,6 +47,8 @@ public class CompteImpl implements Compte{
 	public void crediter(double montant){
 		if(montant > 0){
 			credits.add(montant);
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 	public void debiter(double montant){
