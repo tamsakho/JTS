@@ -9,21 +9,33 @@ public class CompteImpl implements Compte{
 	private List<Double> credits;
 	private List<Double> debits;
 	private double decouvert;
+	private Personne titulaire;
 	
 	
 	public CompteImpl() {
 		super();
 		credits = new ArrayList<>();
-		debits= new ArrayList<>();
+		debits = new ArrayList<>();
 	}
 	
 	public CompteImpl(double decouvert) {
 		this();
 		this.decouvert = decouvert;
 	}
+	
+	public CompteImpl(double decouvert, Personne titulaire) {
+		this(decouvert);
+		this.titulaire = titulaire;
+	}
+	
+	public CompteImpl(Personne titulaire) {
+		this.titulaire = titulaire;
+	}
+
 	public double getDecouvert() {
 		return decouvert;
 	}
+	
 	public void setDecouvert(double decouvert) {
 		this.decouvert = decouvert;
 	}
@@ -47,6 +59,14 @@ public class CompteImpl implements Compte{
 
 	public double getSolde() {
 		return BanqueUtils.calculSomme(credits) - BanqueUtils.calculSomme(debits);
+	}
+
+	public Personne getTitulaire() {
+		return titulaire;
+	}
+
+	public void setTitulaire(Personne titulaire) {
+		this.titulaire = titulaire;
 	} 
 
 }
